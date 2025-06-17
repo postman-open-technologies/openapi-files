@@ -214,7 +214,7 @@ components:
       flows:
         clientCredentials:
           x-tokenEndpointAuthMethod: client_secret_basic
-          tokenUrl: https://wwwcie.ups.com/security/v1/oauth/token (Opens in new window or tab)
+          tokenUrl: https://wwwcie.ups.com/security/v1/oauth/token
           scopes: {}
     JWTAuth:
       type: "http"

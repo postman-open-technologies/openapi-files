@@ -1,0 +1,1 @@
+Fixed syntax errors preventing collection generation.

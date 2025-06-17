@@ -272,15 +272,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: version
-          in: path
-          description: version
-          required: true
-          schema:
-            type: string
-          default: v1
-          enum:
-            - v1
       requestBody:
         required: true
         content:
