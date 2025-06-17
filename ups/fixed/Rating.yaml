@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Rate
   termsOfService: https://www.ups.com/upsdeveloperkit/assets/html/serviceAgreement.html
-  version: ''
+  version: v2409
   description: |
   
     The Rating API is used when rating or shopping a shipment.
@@ -797,7 +797,7 @@ paths:
                 application/json:
                   schema:
                     "$ref": "#/components/schemas/ErrorResponse"
-  "/rating/{deprecatedVersion}/{requestoption}":
+  "/rating/v1/{requestoption}":
     post:
       deprecated: true
       summary: Rating
@@ -828,24 +828,6 @@ paths:
         description: 'Valid Values: timeintransit = The server rates with transit
           time information combined with requestoption in URL.Rate is the only valid
           request option for Ground Freight Pricing requests. Length 15'
-      - in: path
-        name: deprecatedVersion
-        schema:
-          type: string
-          minimum: 1
-          default: v1
-        description: |
-            Indicates Rate API to display the new release features in Rate API response based on Rate release. See the New section for the latest Rate release.
-
-            Valid values:
-            - v1
-            - v1601
-            - v1607
-            - 1701
-            - 1707
-            - v2108
-            - v2205
-        required: true
       - in: path
         name: requestoption
         schema:

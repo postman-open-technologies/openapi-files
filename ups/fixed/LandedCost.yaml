@@ -23,7 +23,7 @@ info:
     <a href="https://github.com/UPS-API" target="_blank" rel="noopener noreferrer">
       <img src="https://www.ups.com/assets/resources/webcontent/images/gitHubButton.svg" alt="Open in GitHub " style="width: 128px; height: 32px;">
     </a>
-  version: ''
+  version: v1
 servers:
   - url: https://wwwcie.ups.com/api
     description: Customer Integration Environment

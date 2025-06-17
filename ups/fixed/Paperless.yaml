@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Paperless Document
-  version: ''
+  version: v2
   description: |
   
     The Paperless Documents API allows users to upload specific trade documents for paperless processing of international shipments. <br />The /upload endpoint of the API requires document details, including file name, file format, and document type (such as authorization form, commercial invoice, certificate of origin, export license, etc).<br />The /image endpoint helps users upload document images as support documents for shipping<br />The /delete endpoint of the API helps delete a specific document the user has uploaded.
@@ -316,7 +316,7 @@ paths:
                 application/json:
                   schema:
                     "$ref": "#/components/schemas/ErrorResponse"
-  "/paperlessdocuments/{deprecatedVersion}/upload":
+  "/paperlessdocuments/v1/upload":
     post:
       deprecated: true
       summary: Upload Paperless Document
@@ -341,17 +341,6 @@ paths:
           default: testing
         description: An identifier of the client/source application that is making
           the request.Length 512
-      - in: path
-        name: deprecatedVersion
-        schema:
-          type: string
-          default: v1
-        description: |
-            Version of API
-
-            Valid values:
-            - v1
-        required: true
       - in: header
         name: ShipperNumber
         schema:
@@ -439,7 +428,7 @@ paths:
                 application/json:
                   schema:
                     "$ref": "#/components/schemas/ErrorResponse"
-  "/paperlessdocuments/{deprecatedVersion}/image":
+  "/paperlessdocuments/v1/image":
     post:
       deprecated: true
       summary: Paperless Document Push Image
@@ -463,17 +452,6 @@ paths:
           default: testing
         description: An identifier of the client/source application that is making
           the request.Length 512
-      - in: path
-        name: deprecatedVersion
-        schema:
-          type: string
-          default: v1
-        description: |
-            Version of API
-
-            Valid values:
-            - v1
-        required: true
       - in: header
         name: ShipperNumber
         schema:
@@ -535,7 +513,7 @@ paths:
                 application/json:
                   schema:
                     "$ref": "#/components/schemas/ErrorResponse"
-  "/paperlessdocuments/{deprecatedVersion}/DocumentId/ShipperNumber":
+  "/paperlessdocuments/v1/DocumentId/ShipperNumber":
     delete:
       deprecated: true
       summary: Delete Paperless Document
@@ -558,17 +536,6 @@ paths:
           default: testing
         description: An identifier of the client/source application that is making
           the request.Length 512
-      - in: path
-        name: deprecatedVersion
-        schema:
-          type: string
-          default: v1
-        description: |
-            Version of API
-
-            Valid values:
-            - v1
-        required: true
       - in: header
         name: ShipperNumber
         schema:

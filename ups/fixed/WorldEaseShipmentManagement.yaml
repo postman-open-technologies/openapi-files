@@ -1,6 +1,7 @@
 openapi: 3.1.0
 info: 
   title: WorldEase Shipment Management API v1
+  version: v1
   description: |
     ## Purpose
     The WorldEase Shipment Management API facilitates the consolidation of packages into a single shipment to reduce the brokerage fees and streamline international shipping processes. It offers users the ability to manage the shipment lifecycle including aggregating individual packages, closing out shipments once consolidation is completed and managing master and child shipments with options to delete as necessary.
@@ -56,15 +57,6 @@ paths:
           required: true
           schema:
               $ref: "#/components/schemas/CustomTransactionSrc" 
-        - name: version
-          in: path
-          description: Indicates WorldEase Shipment Management API to display the new release features
-          required: true
-          schema:
-            type: string
-          default: v1
-          enum:
-            - v1
 
       security:
         - OAuth2: []
@@ -166,27 +158,9 @@ paths:
           required: true
           schema:
              $ref: "#/components/schemas/CustomTransactionSrc"  
-        - name: version
-          in: path
-          description: Indicates WorldEase Shipment Management API to display the new release features
-          required: true
-          schema:
-            type: string
-          default: v1
-          enum:
-            - v1             
       security:
         - OAuth2: []
       
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PostRequest'
-            examples:
-              DeleteRequest:
-                value:
-                  shipperAccountNumber: "ISUS01"            
       responses:
         '200':
           description: "Successful Operation"
@@ -260,7 +234,7 @@ paths:
             type: string
             maxLength: 11
             pattern: '^[A-Za-z0-9]{11}$'
-        - name: trackingNumber
+        - name: tracking-number
           in: path
           required: true
           description: The identifier of the shipment to identify the child shipment. It is also known as 1Z Tracking Number.
@@ -276,16 +250,6 @@ paths:
           required: true
           schema:
             $ref: "#/components/schemas/CustomTransactionSrc" 
-        - name: version
-          in: path
-          description: Indicates WorldEase Shipment Management API to display the new release features
-          required: true
-          schema:
-            type: string
-          default: v1
-          enum:
-            - v1
-
             
       security:
         - OAuth2: []

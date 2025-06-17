@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Address Validation - Street Level
   termsOfService: https://www.ups.com/upsdeveloperkit/assets/html/serviceAgreement.html
-  version: ''
+  version: v2
   description: |
   
     The Address Validation Street Level API can be used to.
@@ -147,7 +147,7 @@ paths:
                 application/json:
                   schema:
                     "$ref": "#/components/schemas/ErrorResponse"
-  "/addressvalidation/{deprecatedVersion}/{requestoption}":
+  "/addressvalidation/v1/{requestoption}":
     post:
       deprecated: true
       summary: Address Validation
@@ -194,18 +194,6 @@ paths:
             - 3 - Address Validation and Address Classification.
 
             For a list of valid values, refer to Address Validation API Supported Countries or Territories in the Appendix.
-        required: true
-      - in: path
-        name: deprecatedVersion
-        schema:
-          type: string
-          minimum: 1
-          default: v1
-        description: |
-            Identifies the version of the API.
-
-            Valid  values:
-            - v1
         required: true
       requestBody:
         description: Generate sample code for popular API requests by selecting an

@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Locator
-  version: ''
+  version: v3
   description: |
   
     The Locator API allows you to find UPS locations - such as drop-off points, retail locations, and UPS access points (third-party retail locations that offer UPS package drop-off, or delivery services). The API provides capabilities to search by location, services offered, program types, and related criteria. You can also retrieve hours of operation, location details, and additional UPS services offered at specific locations.
@@ -163,7 +163,7 @@ paths:
                 application/json:
                   schema:
                     "$ref": "#/components/schemas/ErrorResponse"
-  "/locations/{deprecatedVersion}/search/availabilities/{reqOption}":
+  "/locations/v1/search/availabilities/{reqOption}":
     post:
       deprecated: true
       summary: Locator
@@ -186,17 +186,6 @@ paths:
           default: testing
         description: An identifier of the client/source application that is making
           the request.Length 512
-      - in: path
-        name: deprecatedVersion
-        schema:
-          type: string
-          default: v1
-        description: |
-            Version of API
-
-            Valid values:
-            - v1
-        required: true
       - in: path
         name: reqOption
         schema:

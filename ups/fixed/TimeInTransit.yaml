@@ -1,6 +1,7 @@
 openapi: 3.0.3
 info:
   title: Time In Transit
+  version: v1
   description: |
   
     The Time In Transit API provides estimated delivery times for various UPS shipping services, between specified locations.

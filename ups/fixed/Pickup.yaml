@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Pickup
-  version: ''
+  version: v2409
   description: |
   
     Using the Pickup API, applications can schedule pickups, manage previously scheduled pickups, or cancel previously scheduled pickups.
@@ -23,7 +23,7 @@ servers:
   - url: https://onlinetools.ups.com/api
     description: Production
 paths:
-  "/shipments/{version}/pickup/{pickuptype}":
+  "/shipments/{version}/pickup/{pickuptypeOrCancelBy}":
     post:
       description: Using the POST operation of the pickuptype endpoint within the Pickup API, users can request rates for UPS on-demand package pickup. The endpoint allows users to specify pickup details like address, date/time, and other options, and returns pricing information for booking that pickup.
       summary: Pickup Rate
@@ -60,7 +60,7 @@ paths:
             - v2409
         required: true
       - in: path
-        name: pickuptype
+        name: pickuptypeOrCancelBy
         schema:
           type: string
           minimum: 1
@@ -172,7 +172,7 @@ paths:
             - v2409
         required: true
       - in: path
-        name: pickuptype
+        name: pickuptypeOrCancelBy
         schema:
           type: string
           minimum: 1
@@ -213,7 +213,6 @@ paths:
                 application/json:
                   schema:
                     "$ref": "#/components/schemas/ErrorResponse"
-  "/shipments/{version}/pickup/{CancelBy}":
     delete:
       description: Using the CancelBy endpoint of the Pickup API, users can request cancellation of a UPS on-demand package pickup. When the PRN (pickup request number), transaction ID, and the transaction source are supplied as required parameters, the endpoint returns confirmation that the pickup has been cancelled.
       summary: Pickup Cancel
@@ -245,7 +244,7 @@ paths:
           if CancelBy = prn.Length 26"
         required: false
       - in: path
-        name: CancelBy
+        name: pickuptypeOrCancelBy
         schema:
           type: string
         description: 'Valid Values: 01 = AccountNumber, 02 = PRN'
@@ -584,7 +583,7 @@ paths:
                 application/json:
                   schema:
                     "$ref": "#/components/schemas/ErrorResponse"
-  "/shipments/{deprecatedVersion}/pickup/{CancelBy}":
+  "/shipments/v1/pickup/{CancelBy}":
     delete:
       deprecated: true
       description: Using the CancelBy endpoint of the Pickup API, users can request cancellation of a UPS on-demand package pickup. When the PRN (pickup request number), transaction ID, and the transaction source are supplied as required parameters, the endpoint returns confirmation that the pickup has been cancelled.
@@ -622,18 +621,6 @@ paths:
           type: string
         description: 'Valid Values: 01 = AccountNumber, 02 = PRN'
         required: true
-      - in: path
-        name: deprecatedVersion
-        schema:
-          type: string
-          minimum: 1
-          default: v2409
-        description: |
-            Version of API.
-
-            Valid values:
-            - v2409
-        required: true
       responses:
         '200':
           description: successful operation
@@ -665,7 +652,7 @@ paths:
                 application/json:
                   schema:
                     "$ref": "#/components/schemas/ErrorResponse"
-  "/pickupcreation/{deprecatedVersion}/pickup":
+  "/pickupcreation/v1/pickup":
     post:
       deprecated: true
       description: Using the Pickup API, applications can schedule pickups, manage
@@ -691,20 +678,6 @@ paths:
         description: An identifier of the client/source application that is making
           the request.Length 512
         required: false
-      - in: path
-        name: deprecatedVersion
-        schema:
-          type: string
-          minimum: 1
-          default: v2409
-        description: |
-            Version of the API.
-
-            Valid values:
-            - v1
-            - v1607
-            - v1707
-        required: true
       requestBody:
         description: Generate sample code for popular API requests by selecting an
           example below. To view a full sample request and response, first click "Authorize"

@@ -39,14 +39,16 @@ info:
       <img src="https://www.ups.com/assets/resources/webcontent/images/gitHubButton.svg" alt="Open in GitHub " style="width: 128px; height: 32px;">
     </a>
   version: '1.0'
+
+servers:
+  - url: https://wwwcie.ups.com/security
+    description: Customer Integration Environment
+  - url: https://onlinetools.ups.com/security
+    description: Production
+
 paths:
   "/v1/oauth/authorize":
     get:
-      servers:
-        - url: https://wwwcie.ups.com/security
-          description: Customer Integration Environment
-        - url: https://onlinetools.ups.com/security
-          description: Production
       tags:
         - OAuth Auth Code
       summary: Authorize Client
@@ -143,11 +145,6 @@ paths:
                     "$ref": "#/components/schemas/tokenErrorResponse"
   "/v1/oauth/token":
     post:
-      servers:
-        - url: https://wwwcie.ups.com/security
-          description: Customer Integration Environment
-        - url: https://onlinetools.ups.com/security
-          description: Production
       tags:
         - OAuth Auth Code
       security:
@@ -219,11 +216,6 @@ paths:
                     "$ref": "#/components/schemas/tokenErrorResponse"
   "/v1/oauth/refresh":
     post:
-      servers:
-        - url: https://wwwcie.ups.com/security
-          description: Customer Integration Environment
-        - url: https://onlinetools.ups.com/security
-          description: Production
       security:
       - BasicAuthRefresh: []
       summary: Refresh Token

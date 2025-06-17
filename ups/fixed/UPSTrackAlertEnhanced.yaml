@@ -1,6 +1,7 @@
 openapi: 3.1.0
 info:
   title: UPS Track Alert API with Photo
+  version: v1
   description: |
 
     # Product Info
@@ -153,15 +154,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: version
-          in: path
-          description: version
-          required: true
-          schema:
-            type: string
-          default: v1
-          enum:
-            - v1
       requestBody:
         content:
           application/json:

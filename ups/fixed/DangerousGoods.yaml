@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Dangerous Goods Utility
   termsOfService: https://www.ups.com/upsdeveloperkit/assets/html/serviceAgreement.html
-  version: ''
+  version: v2409
   description: |
   
     The Dangerous Goods API provides the ability to determine if certain materials, such as dangerous goods or hazardous materials, can be shipped with UPS. The API's two endpoints - Chemical Reference Data and Acceptance Audit Precheck, help perform pre-checks before shipping any dangerous goods.
@@ -243,7 +243,7 @@ paths:
                 application/json:
                   schema:
                     "$ref": "#/components/schemas/ErrorResponse"
-  "/dangerousgoods/{deprecatedVersion}/chemicalreferencedata":
+  "/dangerousgoods/v1/chemicalreferencedata":
     post:
       deprecated: true
       summary: Chemical Reference Data
@@ -267,19 +267,6 @@ paths:
           default: testing
         description: An identifier of the client/source application that is making
           the request.Length 512
-        required: true
-      - in: path
-        name: deprecatedVersion
-        schema:
-          type: string
-          minimum: 1
-          default: v1
-        description: |
-          Version of the API.
-
-          Valid values:
-          - v1
-          - v1801.
         required: true
       requestBody:
         description: Generate sample code for popular API requests by selecting an
@@ -330,7 +317,7 @@ paths:
                 application/json:
                   schema:
                     "$ref": "#/components/schemas/ErrorResponse"
-  "/dangerousgoods/{deprecatedVersion}/acceptanceauditprecheck":
+  "/dangerousgoods/v1/acceptanceauditprecheck":
     post:
       deprecated: true
       tags:
@@ -354,17 +341,6 @@ paths:
           default: testing
         description: An identifier of the client/source application that is making
           the request.Length 512
-        required: true
-      - in: path
-        name: deprecatedVersion
-        schema:
-          type: string
-          default: v1
-        description: |
-            API version
-
-            Valid values:
-            - v1
         required: true
       requestBody:
         description: Generate sample code for popular API requests by selecting an
@@ -859,6 +835,8 @@ components:
           type: array
           minLength: 1
           maxLength: 250
+          items:
+            type: string
       xml:
         name: ProperShippingNameDetail
       description: Container to hold Proper Shipping Name Detail information.  It

@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Quantum View
-  version: ''
+  version: v3
   description: |
   
     UPS Quantum View is a suite of services that gives you and your customers details regarding UPS shipments.
@@ -100,7 +100,7 @@ paths:
                 application/json:
                   schema:
                     "$ref": "#/components/schemas/ErrorResponse"
-  "/quantumview/{deprecatedVersion}/events":
+  "/quantumview/v1/events":
     post:
       deprecated: true
       summary: Quantum View
@@ -110,18 +110,6 @@ paths:
         - OAuth2: []
       description: Get Quantum View Response
       operationId: Deprecated QuantumView
-      parameters:
-      - in: path
-        name: deprecatedVersion
-        schema:
-          type: string
-          default: v1
-        description: |
-            Version of API.
-
-            Valid values:
-            - v1
-        required: true
       requestBody:
         description: Generate sample code for popular API requests by selecting an
           example below. To view a full sample request and response, first click "Authorize"
@@ -2342,7 +2330,7 @@ components:
             - 02 - Consignee Billing
             - 03 - Third Party
             - 04 - Freight Collect
-          Indicates how shipping charges for the package were billed. Valid Values: 01 Shipper, 02 Consignee Billing ,03 Third Party, 04 Freight Collect
+            Indicates how shipping charges for the package were billed. Valid Values: 01 Shipper, 02 Consignee Billing ,03 Third Party, 04 Freight Collect
           maximum: 1
           type: string
           minLength: 2

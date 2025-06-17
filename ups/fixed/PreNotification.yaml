@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: PreNotification
-  version: ''
+  version: v2
   description: |
   
     The Pre-Notification API allows customer applications to inform UPS operations of Dangerous Goods shipments as they are processed and will enter the UPS transportation network prior to an upload of manifest information at the end of the day.
@@ -165,7 +165,7 @@ paths:
                 application/json:
                   schema:
                     "$ref": "#/components/schemas/ErrorResponse"
-  "/dangerousgoods/{deprecatedVersion}/prenotification":
+  "/dangerousgoods/v1/prenotification":
     post:
       deprecated: true
       summary: Pre-Notification
@@ -193,17 +193,6 @@ paths:
         description: An identifier of the client/source application that is making
           the request.Length 512
         required: false
-      - in: path
-        name: deprecatedVersion
-        schema:
-          type: string
-          default: v1
-        description: |
-            Version of API.
-
-            Valid values:
-            - v1
-        required: true
       requestBody:
         description: Generate sample code for popular API requests by selecting an
           example below. To view a full sample request and response, first click "Authorize"
